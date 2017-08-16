@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">	
+
+<struts>
+    <!-- devMode is helpful when you want some extra logs for debugging -->
+    <constant name="struts.devMode" value="false" />
+    <!-- Global message resource;
+    	 Otherwise you will have seperate message resource for each Action
+    -->
+    <constant name="struts.custom.i18n.resources" value="messages" /> 
+
+    <constant name="struts.enable.SlashesInActionNames" value="true"/>
+
+    <!-- Normal Action mappings are defined here -->
+	<package name="default" namespace="" extends="struts-default">
+
+		<action name=""><result>/index.jsp</result></action>
+		<action name="list" class="userAction" method="listUsers">
+			<result>/view/analytics.jsp</result>
+		</action>
+		<action name="dau" class="userAction" method="dau">
+			<result name="success">view/dailyactiveUsers.jsp</result>
+			<result name="input">view/analytics.jsp</result>
+		</action>
+		<action name="retention" class="userAction" method="retention">
+			<result name="success">view/retention.jsp</result>
+			<result name="input">view/analytics.jsp</result>
+		</action>
+
+	</package>
+	
+</struts>
